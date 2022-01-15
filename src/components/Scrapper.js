@@ -17,7 +17,7 @@ class Scrapper extends Component {
   }
 
   async componentDidMount() {
-    const { data } = await axios.get("http://localhost:4000/");
+    const { data } = await axios.get("http://localhost:4000/home");
     if (data) {
       this.setState({ content: data.fr });
     }
@@ -66,8 +66,8 @@ class Scrapper extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="row">
+      <div className="container-fluid">
+        <div className="row sticky-top">
           <div className="col-4 mx-auto">
             <div className="input-group">
               <input
@@ -78,7 +78,7 @@ class Scrapper extends Component {
               ></input>
               <span className="input-group-btn">
                 <button
-                  className="btn btn-outline-primary"
+                  className="btn btn-primary text-white"
                   type="button"
                   onClick={() => this.onSubmit()}
                 >
@@ -89,7 +89,7 @@ class Scrapper extends Component {
           </div>
         </div>
         <br></br>
-        <div className="row">
+        <div className="row" style={{ height: "1000px" }}>
           <div className="col-9 card-columns">
             {this.state.content?.slice(0, 11).map((item, index) => (
               <div className="card bg-primary text-white border-light">
@@ -118,7 +118,7 @@ class Scrapper extends Component {
             ))}
           </div>
           <div className="col-3">
-            <div className="card ml-2 mr-2 h-50">
+            <div className="card ml-2 mr-2 h-50 overflow-auto">
               <div className="text-center card-header bg-primary text-white font-weight-bold">
                 Recently Searched
               </div>
