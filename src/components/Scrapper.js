@@ -17,12 +17,14 @@ class Scrapper extends Component {
   }
 
   async componentDidMount() {
-    const { data } = await axios.get("http://localhost:4000/home");
+    const { data } = await axios.get("https://scrdatabase.herokuapp.com/home");
     if (data) {
       this.setState({ content: data.fr });
     }
 
-    const result = await axios.get("http://localhost:4000/recentSearch");
+    const result = await axios.get(
+      "https://scrdatabase.herokuapp.com/recentSearch"
+    );
     if (result) {
       this.setState({ rs: result.data.rs });
     }
@@ -42,7 +44,7 @@ class Scrapper extends Component {
   onTitleClick(t) {
     this.setState({ content: dataAPI });
     axios
-      .post("http://localhost:4000/search", { title: t })
+      .post("https://scrdatabase.herokuapp.com/search", { title: t })
       .then(({ data }) => {
         this.setState({ content: data.fr, rs: data.rs });
       })
@@ -55,7 +57,9 @@ class Scrapper extends Component {
     if (this.state.search && this.state.search !== "") {
       this.setState({ content: dataAPI });
       axios
-        .post("http://localhost:4000/search", { title: this.state.search })
+        .post("https://scrdatabase.herokuapp.com/search", {
+          title: this.state.search,
+        })
         .then(({ data }) => {
           if (data) {
             this.setState({ content: data.fr, rs: data.rs });
