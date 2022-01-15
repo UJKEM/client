@@ -8,12 +8,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div
-          className="App"
-          style={{
-            background: "#282c34",
-          }}
-        >
+        <div className="App">
           <Switch>
             <Route exact path="/" component={Scrapper} />
             <Route exact path="/details" component={Details} />
