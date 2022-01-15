@@ -122,14 +122,14 @@ class Scrapper extends Component {
             ))}
           </div>
           <div className="col-3">
-            <div className="card ml-2 mr-2 h-50 overflow-auto">
+            <div className="card ml-2 mr-2 h-50 overflow-auto bg-muted">
               <div className="text-center card-header bg-primary text-white font-weight-bold">
                 Recently Searched
               </div>
               {this.state.rs?.map((t, index) => (
                 <ul className="list-group list-group-flush">
                   <li
-                    className="list-group-item list-group-item-action"
+                    className="list-group-item list-group-item-action bg-info text-white"
                     onClick={() => this.onTitleClick(t.title)}
                   >
                     {t.title}

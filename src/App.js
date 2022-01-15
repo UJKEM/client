@@ -8,7 +8,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
+        <div className="App" style={{ background: "#1A2238" }}>
           <Switch>
             <Route exact path="/" component={Scrapper} />
             <Route exact path="/details" component={Details} />
