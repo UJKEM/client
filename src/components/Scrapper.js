@@ -17,12 +17,12 @@ class Scrapper extends Component {
   }
 
   async componentDidMount() {
-    const { data } = await axios.get("/home");
+    const { data } = await axios.get("http://localhost:4000/home");
     if (data) {
       this.setState({ content: data.fr });
     }
 
-    const result = await axios.get("/recentSearch");
+    const result = await axios.get("http://localhost:4000/recentSearch");
     if (result) {
       this.setState({ rs: result.data.rs });
     }
@@ -42,7 +42,7 @@ class Scrapper extends Component {
   onTitleClick(t) {
     this.setState({ content: dataAPI });
     axios
-      .post("/search", { title: t })
+      .post("http://localhost:4000/search", { title: t })
       .then(({ data }) => {
         this.setState({ content: data.fr, rs: data.rs });
       })
@@ -54,11 +54,13 @@ class Scrapper extends Component {
   onSubmit() {
     if (this.state.search && this.state.search !== "") {
       this.setState({ content: dataAPI });
-      axios.post("/search", { title: this.state.search }).then(({ data }) => {
-        if (data) {
-          this.setState({ content: data.fr, rs: data.rs });
-        }
-      });
+      axios
+        .post("http://localhost:4000/search", { title: this.state.search })
+        .then(({ data }) => {
+          if (data) {
+            this.setState({ content: data.fr, rs: data.rs });
+          }
+        });
     }
   }
 
