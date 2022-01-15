@@ -12,7 +12,6 @@ class App extends Component {
           className="App"
           style={{
             background: "#282c34",
-            position: "sticky",
           }}
         >
           <Switch>
